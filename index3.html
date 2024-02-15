@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        html{
+            font-size: 62.5%;
+        }
+        .Main{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color:azure
+
+
+        }
+        .innerdiv{
+            display: flex;
+            /* justify-content: center; */
+            gap:2rem;
+            
+            
+
+            
+        }
+        select option{
+            background-color: transparent;
+        }
+        .DivOne{
+            font-size: 1rem;
+            border: 1px solid black;
+            height: 40rem;
+            width: 50rem;
+            margin-top: 1rem;
+            border-radius: 1rem;
+            background-color: #212936cc;
+            font-size: medium;
+            color:azure
+            
+        
+            
+
+        }
+        .DivOne1{
+            font-size: 1rem;
+            border: 1px solid black;
+            height: 40rem;
+            width: 50rem;
+            margin-top: 1rem;
+            border-radius: 1rem;
+            background-color: #212936cc;
+            font-size: medium;
+            color:azure;
+
+        }
+        .DivOneInner{
+            display: flex;
+            gap:5rem;
+            
+            margin-top: 2rem;
+            margin-left: 2rem;
+        }
+        .Line{
+            border-top: 1px solid black;
+            width: 46rem;
+            margin-left:1.5rem ;
+            margin-top: 1.5rem;
+            
+        }
+        .text{
+            margin-left:2rem ;
+            margin-top: 2rem;
+        }
+        .Footer{
+            display: flex;
+            justify-content: space-between;
+            margin-top:auto;
+            flex-grow: 1;
+            margin-top: 27rem;
+            margin-left: 1rem;
+            margin-right: 1rem;
+        
+        }
+        body{
+            background-image: url("https://images.unsplash.com/photo-1464802686167-b939a6910659?q=80&w=2050&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        }
+        button{
+            background-color:transparent ;
+            border:2px solid #212936cc;
+            color: azure;
+        }
+        .Translate{
+            color:azure;
+            background-color: rgb(39, 39, 255);
+            height: 25px;
+            width: auto;
+        }
+        @media only screen and (max-width: 110rem) {
+            html{
+                font-size: 56.25%;
+            }
+            .innerdiv{
+                display: flex;
+                flex-direction: column;
+                
+            }
+        }
+        @media only screen and (max-width: 48rem) {
+            html{
+                font-size: 50%;
+            }
+            .innerdiv{
+                display: flex;
+                flex-direction: column;
+                
+                
+            }
+            .Main{
+                margin-right: 10rem;
+            }
+            .Footer{
+            margin-top: 24rem;
+            margin-left: 2rem;
+            margin-right: 2rem;
+
+            }
+            .DivOneInner{
+               margin-left: 0rem; 
+            }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="Main">
+        <div >Translated.io</div>
+        <div class="innerdiv">
+            <div class="DivOne">
+                <div class="DivOneInner">
+                    <div>Detect Language</div>
+                <div>English</div>
+                <div>French</div>
+                <div>
+                    <select>
+                        <option>Spanish</option>
+                    </select>
+                </div>
+                
+                </div>
+                <div class="Line">
+
+                </div>
+                <div class="text">
+                    How are you?
+                </div>
+                <div class="Footer">
+<div>
+    <button><i class="fa fa-volume-up"></i></button>
+    <button><i>&#128203;</i></button>
+
+</div>
+<div>
+    <button class="Translate">Translate</button>
+</div>
+                </div>
+                
+
+            </div>
+            
+                <div class="DivOne1">
+                    <div class="DivOneInner">
+                        <div>Detect Language</div>
+                    <div>English</div>
+                    <div>French</div>
+                    <div>
+                        <select>
+                            <option>Spanish</option>
+                        </select>
+                    </div>
+                    
+                    </div>
+                    <div class="Line">
+    
+                    </div>
+                    <div class="text">
+                        How are you?
+                    </div>
+                    <div class="Footer">
+    <div>
+        <button><i class="fa fa-volume-up"></i></button>
+        <button><i>&#128203;</i></button>
+    
+    </div>
+    <div>
+        <button class="Translate">Translate</button>
+    </div>
+                    </div>
+                    
+    
+                </div>
+            
+
+
+        </div>
+    </div>
+</body>
+</html>

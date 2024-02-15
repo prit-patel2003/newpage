@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+  @import url('https://fonts.googleapis.com/css2?family=Water+Brush&display=swap');
+       
+/*         
+.Container{
+   height: 100vw;
+   width: 100vw;
+
+   
+} */
+html{
+    font-size: 62.5%;
+}
+.Image{
+    height: 50rem;
+    max-width: 50rem;
+   /* opacity: 0.7; */
+   z-index: 2;
+   /* position: relative; */
+   filter: brightness(30%);
+
+}
+.InnerDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+margin-bottom: 20px;
+   
+    
+}
+
+.Logo{
+    height: 10rem;
+    max-width: 10rem;
+    position: relative;
+    top:500px;
+    z-index: 1;
+    /* filter: brightness(300%); */
+    
+}
+.Data{
+    position: relative;
+    height: auto;
+    max-width: 50rem;
+    color: black;
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    border-radius: 2px;
+   background-color:rgb(209, 171, 146);
+   margin-top:-4px;
+
+    
+    
+}
+.Data div{
+    text-align: center;
+}
+
+.Text table{
+    
+    font-size:7rem;
+    color:white;
+    position: relative;
+    top:500px;
+    max-width: 100%;
+    border-collapse: collapse;
+    z-index: 3;
+    
+}
+.Text table td{
+    text-align: center;
+    font-family: 'Water Brush', cursive;
+    font-weight: 800;
+    
+
+    
+}
+.text1{
+    /* text-align: center; */
+    font-family: 'Water Brush', cursive;
+    font-weight: 800;
+    font-size: 9rem;
+}
+/* .text2{
+    text-align:center ;
+} */
+.text3{
+    /* text-align: center; */
+    font-size: 2rem;
+}
+.text4{
+    /* text-align:center; */
+font-size:1rem;
+margin:1rem
+}
+.btn{
+    color:rgb(209, 171, 146);
+    background-color: black;
+    border: none;
+    height: 3rem;
+    max-width: 6rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.Food{
+    font-size: 9rem;
+}
+
+@media screen and (max-width:27rem){
+    html{
+        font-size:50%;
+    }
+    .Text table{
+        top:400px;
+    }
+    .Logo{
+top:400px;
+    }
+}
+@media screen and (min-width:34rem) {
+    html{
+        font-size: 70%;
+    }
+    .Text table{
+        top:550px;
+    }
+    .Logo{
+top:550px;
+    }
+}
+@media screen and (min-width:50rem){
+    html{
+        font-size:80%;
+    }
+    .Text table{
+        top:620px;
+    }
+    .Logo{
+top:620px;
+    }
+}
+@media screen and (min-width:57rem){
+    html{
+        font-size:85%;
+    }
+    .Text table{
+        top:670px;
+    }
+    .Logo{
+top:670px;
+    }
+}
+@media screen and (min-width:70rem){
+    html{
+        font-size:95%;
+    }
+    .Text table{
+        top:745px;
+    }
+    .Logo{
+top:745px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="Container">
+        <div class="InnerDiv">
+            <div >
+                <img src="https://img.createsend1.com/resize/ei/y/AE/8DC/8E4/csimport/logo332.png?w=900" class="Logo">
+            </div>
+            <div class="Text">
+                <table>
+                    <tr>
+                        <td>
+                            The Best
+                        </td>
+                    </tr>
+                    <tr class="Food">
+                        <td>
+                            Food &
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="Food">
+                            Drinks
+                        </td>
+                        
+                    </tr>
+                </table>
+                
+            </div>
+            <div >
+
+            </div>
+            <div >
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="Image"></img>
+            </div>
+            <div class="Data">
+                <Table>
+                    <tr>
+                        <td>
+                            <div class="text2">
+                                <span>&#9733;</span>
+                                <span>&#9733;</span>
+                                <span>&#9733;</span>
+                                <span>&#9733;</span>
+                                <span>&#9734;</span>
+            
+            
+                            </div>
+                        </td>
+                    </tr>
+               <tr>
+                <td>
+                    <div class="text1">
+                        Cheap eats
+                    </div>
+                </td>
+               </tr>
+               <tr>
+                <td>
+                    <div class="text3">
+                       <b>
+                        Top 10 Best Deals
+                       </b> 
+                    </div>
+                   
+                </td>
+               </tr>
+               <tr>
+                <td>
+                    <div class="text4">
+                        Here’s our list of the most delicious cheap eats in San Francisco. One rule, no budget busters, only great food and beautiful décor.
+                    </div>
+                </td>
+
+               </tr>
+               <tr>
+                <td>
+                    <div>
+                        <button class="btn">Read More</button>
+                    </div>
+                </td>
+               </tr>
+                
+            </Table>
+            </div>
+        
+        </div>
+        
+    </div>
+</body>
+</html>
