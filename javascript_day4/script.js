@@ -60,9 +60,12 @@ function rangeoddeven(){
          }
     }
 }
-// function ArmStrong(){
-//     var c=prompt("enter min val");
-//     var d=promt("enter max val");
-//     let sum=0;
-//     for(let)
-// }
+function ArmStrong(){
+    let a=prompt("enter min val");
+    let b=prompt("enter max val");
+    let sum=0;
+    
+    
+
+    
+}
