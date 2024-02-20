@@ -4,8 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        td{
+            width: 40rem;
+            border:1px solid grey;
+        }
+        table{
+            border:1px solid grey;
+
+        }
+        </style>
+        
 </head>
 <body>
+    <form>
+    <input type="text" id="name" placeholder="name">
+    <input type="number" id="age" placeholder="age">
+    <button type="button" onclick="add()">add</button>
+    <button type="reset">reset</button>
     
+</form>
+    <table align="center" id="table">
+        <tr>
+            <td>
+                Name:-
+            </td>
+            <td>
+                Age:-
+            </td>   
+            <td>
+                Action:-
+            </td>
+        </tr>
+    </table>
+    <p id="demo"></p>
+    <script>
+        let store=[];
+        let data=[]
+        function add(){
+            let name=document.getElementById("name").value;
+            let age=document.getElementById("age").value;
+            if(name===""||age==""){
+                alert("all fields are required");}
+            else{
+                const newdata = {name,age}
+            data.push(newdata)
+
+            let tr=document.getElementById("table").insertRow();
+            
+            let td1=tr.insertCell(0)
+            let td2=tr.insertCell(1)
+            let td3=tr.insertCell(2)
+
+            td1.innerHTML=name
+            td2.innerHTML=age
+            const deletebtn = document.createElement("button")
+            deletebtn.innerHTML= "Delete" 
+            deletebtn.onclick=(index)=>{
+                
+                deleterow(index);
+            }  
+            td3.appendChild(deletebtn)
+            console.log(data)
+            }
+            
+            // let child=tr.children
+         
+            // const len = child.length
+            // let d=store.push(len)
+            
+        }
+        function deleterow(index){
+            data.splice(index,1)
+        }
+        
+      
+    </script>
 </body>
 </html>
