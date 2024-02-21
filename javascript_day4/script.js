@@ -249,7 +249,7 @@ let v=0;
 
 }
 function checkword(){
-    let str="Lorem ipsum dolor sit amet consectetur adipisicing elit. \n asdasdasdas asdasd "
+    let str="Lorem ipsum dolor sit amet consectetur adipisicing elit. \n asdasdasdas asdasd"
     let arr=str.split(" ")
     let newline=0;
     let space=0;
@@ -268,7 +268,7 @@ function checkword(){
     }
     console.log(arr)
     console.log(`New line:- ${newline}`)
-    console.log(`word:- ${arr.length}`)
+    console.log(`word:- ${arr.length-newline}`)
     console.log(`space:- ${space}`)
 
 
