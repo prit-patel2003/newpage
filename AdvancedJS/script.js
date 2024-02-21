@@ -10,19 +10,6 @@
 // arr.forEach((el)=>{
 //     console.log(el)
 // })
-
-//polyfill for MAP
-
-// const arr=[1,2,3,4,5]
-// Array.prototype.map=function(callback){
-//     let obj=this
-//     let res=[]
-//     for(let i=0;i<obj.length;i++){
-//         res.push(callback(obj[i]))
-//     }
-//     return res;
-    
-// }
                                     // #Destruchring
 // const res1=arr.map(el=>el*2)
 // console.log(res1)
@@ -136,3 +123,162 @@
 // console.log(obj.__proto__)
 
                                     //   CallBack
+// function perfect(error,a){
+//     if(error){
+//         console.log(error)
+//     }
+//     else{
+        
+//         console.log("Everything is perfect "+a)
+//     }
+// }
+// function sum(a,callback){
+//     console.log(a+2);
+//     callback(null,a)
+//  }
+// let a=10;
+
+// sum(10,perfect)
+
+
+                                            // hoisting
+
+// console.log(a)
+// var a=9;
+// console.log(a)
+// console.log(a)
+// let a=9;  
+// greet();               
+// function greet(){
+//     console.log("hello");
+// }
+// greet();               
+// const greet=()=>{
+//     console.log("hello");
+// }
+
+                                        // Event loops
+
+// setTimeout(function timer() {
+//   console.log('You clicked the button!');
+// }, 2000); 
+
+// console.log("Hi!");
+
+// setTimeout(function timeout() {
+//   console.log("Click the button!");
+// }, 5000);
+
+// console.log("Welcome to loop.");
+
+// function history(){
+//     das
+// }
+// fucntion greet(){
+//     history()
+// }
+// greet()
+
+                                        // Closure
+
+// const x=()=>{
+//     let x=1;
+//     console.log(x);
+//     const y=()=>{
+    // x=2;
+//     console.log(x);
+//             const z=()=>{
+                // x=3
+//                 console.log(x)
+//             }
+//             z()
+//     }
+//     x=100;
+//     y()
+// }
+// x()
+
+//                                      #cookies
+
+// console.log(document.cookies)
+// document.cookies="name=prit213123123"
+// document.cookies="name1=1231212"
+// let a=prompt("enter key")
+// let b=prompt("entervalue")
+// document.cookies=`${encodeURIComponent(a)}=${encodeURIComponent(b)}`
+// console.log(document.cookies)
+
+                                        // #session
+// let key=prompt("enter key");
+// let value=prompt("enter value")
+// localStorage.setItem(`${key}`,`${value}`)
+// console.log(localStorage.getItem("name"))
+// console.log(localStorage.key("prit"))
+// if(key==0){
+//     localStorage.clear()
+// }
+
+                                    // #Call Bind apply
+
+// const obj={
+//     name:"prit",
+//     age:20,
+    
+// }
+// function getname(state,country){
+// console.log(this.name+" "+state+" "+country)
+// }
+// const obj2={
+//     name:"ut",
+//     age:20,
+    
+// }
+// getname.call(obj,"uganda","africa")
+// getname.apply(obj2,["guj","india"])
+// let a=getname.bind(obj,"uganda","africa")
+// a();
+                                        // #shallow copy
+
+// let obj={
+//     "name":"prit"
+// }
+// let user=obj;
+// user.name="ut";
+// console.log(obj)
+
+// let obj={
+//     "name":"prit"
+// }
+// let user=Object.assign({},obj);
+// user.name="ut";
+// console.log(obj)
+
+// let obj={
+//     "name":"prit"
+// }
+// let user={...obj};
+// user.name="ut";
+// console.log(obj)
+
+// let obj={
+//     "name":"prit",
+//     "add":{
+//         city:"ahm"
+//     }
+// }
+// let user=Object.assign({},obj);
+// user.add.city="UP";
+// console.log(obj)
+
+let obj={
+    "name":"prit",
+    "add":{
+        city:"ahm"
+    }
+}
+let user=JSON.parse(JSON.stringify(obj));
+user.add.city="UP";
+console.log(obj)
+console.log(user)
+
+
