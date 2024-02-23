@@ -1,8 +1,8 @@
                                         // #Polyfill
 //polyfill for forEach
 // const arr=[1,2,3,4,5]
-// Array.prototype.forEach=null
-// Array.prototype.forEach=function(callback){
+
+// Array.prototype.forEach=function(){
 //     console.log(this)
 //     for(let i=1;i<=this.length;i++){ 
 //         console.log(i*2)
@@ -16,9 +16,9 @@
 // console.log(arr.map)
 
 // const a=[1,2,3,4,5,6];
-// const [x,,z,,d,]=a
-// const obj={p:1,q:2}
-// const {p,q}=obj
+// const [,,x,w,d,]=a
+// const obj={p:a,q:2}
+// // const {p,q}=obj
 // console.log(x,y,z)
 // console.log(x,z,d)
 // console.log(p,q)
@@ -63,13 +63,14 @@
 
                                         // #Array Method
 // #splice
-// const arr=[1,2,3,4,5]
-// console.log(arr.splice(1,4,4,5))
+// const arr = [1,2,3,4,5] 
+// console.log([...arr].splice(1))
+// console.log(arr.slice(1))
 // console.log(arr)
 
 // #slice
 // const arr=[1,2,3,4,5]
-// console.log(arr.slice(1,3))
+// console.log(arr);
 // console.log(arr.slice(-2,4))
 
 // #concat
@@ -83,13 +84,11 @@
 // console.log(arr.concat(obj))
 
 // #sort
-// let arr = [ 1, 2, 15 ];
+// let arr = [ 1, 2, 15,8 ];
 // arr.sort();
 // console.log(arr)
 // function comparenum(a,b){
-//     if(a>b) return 1
-//     if(a==b) return 0
-//     if(a<b) return -1
+//     b>a
 // }
 // let arr=[1,15,2]
 // arr.sort(comparenum)
@@ -123,22 +122,7 @@
 // console.log(obj.__proto__)
 
                                     //   CallBack
-// function perfect(error,a){
-//     if(error){
-//         console.log(error)
-//     }
-//     else{
-        
-//         console.log("Everything is perfect "+a)
-//     }
-// }
-// function sum(a,callback){
-//     console.log(a+2);
-//     callback(null,a)
-//  }
-// let a=10;
 
-// sum(10,perfect)
 
 
                                             // hoisting
@@ -185,10 +169,10 @@
 //     let x=1;
 //     console.log(x);
 //     const y=()=>{
-    // x=2;
+//     // x=2;
 //     console.log(x);
 //             const z=()=>{
-                // x=3
+//                 // x=3
 //                 console.log(x)
 //             }
 //             z()
@@ -208,7 +192,7 @@
 // document.cookies=`${encodeURIComponent(a)}=${encodeURIComponent(b)}`
 // console.log(document.cookies)
 
-                                        // #session
+                                        // #localstrorage
 // let key=prompt("enter key");
 // let value=prompt("enter value")
 // localStorage.setItem(`${key}`,`${value}`)
@@ -249,9 +233,7 @@
 // let obj={
 //     "name":"prit"
 // }
-// let user=Object.assign({},obj);
-// user.name="ut";
-// console.log(obj)
+// let user=Object.assign({},obj);8/ console.log(obj)
 
 // let obj={
 //     "name":"prit"
@@ -270,15 +252,15 @@
 // user.add.city="UP";
 // console.log(obj)
 
-let obj={
-    "name":"prit",
-    "add":{
-        city:"ahm"
-    }
-}
-let user=JSON.parse(JSON.stringify(obj));
-user.add.city="UP";
-console.log(obj)
-console.log(user)
+// let obj={
+//     "name":"prit",
+//     "add":{
+//         city:"ahm"
+//     }
+// }
+// let user=JSON.parse(JSON.stringify(obj));
+// user.add.city="UP";
+// console.log(obj)
+// console.log(user)
 
 
