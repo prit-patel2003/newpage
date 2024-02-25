@@ -70,13 +70,13 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><button type="submit" onclick="ReadProduct()" id="submit">Add +</button></td>
-
+                    <td><button type="submit" onclick="ReadProduct()" id="submit">Add</button></td>
+                    
 
                 </tr>
                
                 <tr>
-                    <td><button type="reset" onclick="reset()">Reset</button></td>
+                    <td><button type="reset" onclick="reset()" id="reset">Reset</button></td>
 
 
                 </tr>
@@ -85,6 +85,9 @@
                     <td>
                         <p id="edit"></p>
                     </td>
+                </tr>
+                <tr id="updatefield">
+
                 </tr>
 
             </table>
@@ -104,6 +107,7 @@
                 <button class="searchbtn" onclick="search()"><i class="fa fa-search"></i></button>
 
             </div>
+            
             <div>
                 <table>
 
@@ -132,7 +136,7 @@
                     </tr>
 
                     <tbody id="tbody">
-
+                        
 
                     </tbody>
                 </table>

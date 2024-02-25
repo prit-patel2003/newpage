@@ -8,6 +8,11 @@ function ReadProduct(){
     let price=document.getElementById("price").value;
     let SDK=document.getElementById("SDK").value;
     let desc=document.getElementById("desc").value;
+    val(name,quant,price,SDK,desc)
+    
+}
+function val(name,quant,price,SDK,desc){
+    
     let add1=true;
     let add2=true;
     let add3=true;
@@ -16,16 +21,21 @@ function ReadProduct(){
     let add6=true;
 
     if(name.length!==0){
-        const pattern=/^[a-zA-Z]+$/;
+        const pattern=/^(?![\s])[a-zA-Z]+(?:[\s]{1}[a-zA-Z]+)*[\s]*$/;
         if(name.length>0){
-            if(name[0]===" " || name[name.length]===" "){
-               document.getElementById("nameval").innerHTML="No spaces at start or end";
+            if(name[0]===" "){
+               document.getElementById("nameval").innerHTML="No spaces at start";
                document.getElementById("name").style.border="2px solid red"
                add1=false;
             }
             else if(!pattern.test(name)){
 
-                document.getElementById("nameval").innerHTML="No digits or special character";
+                document.getElementById("nameval").innerHTML="Name should contain only letters and single spaces";
+                document.getElementById("name").style.border="2px solid red"
+                add1=false;
+            }
+            else if(name.length>50){
+                document.getElementById("nameval").innerHTML="Name should be less than 50 character";
                 document.getElementById("name").style.border="2px solid red"
                 add1=false;
             }
@@ -39,30 +49,10 @@ function ReadProduct(){
             
         
         }
-        else{
-            for(let i=0;i<arr.length;i++){
-                if(name===arr[i].Product_name){
-                    document.getElementById("nameval").innerHTML="Already exist in data";
-                    document.getElementById("name").style.border="2px solid red"
-                    add1=false;
-                }
-                else{
-                    document.getElementById("nameval").innerHTML="";
-                    document.getElementById("name").style.border="none"
-                    add1=true;
-                }
-            }
-            
-           
-            
-
-            
-
-        }
         
     }
     else if(name.length==0){
-        document.getElementById("nameval").innerHTML="Product is empty";
+        document.getElementById("nameval").innerHTML="Product quantity is empty";
         document.getElementById("name").style.border="2px solid red"
         add2=false;
     }
@@ -73,18 +63,26 @@ function ReadProduct(){
     }
 
 
+    const pattern1=/^(?!0+$)\d+$/
+    if(!pattern1.test(String(quant))){
+        if(quant<0){
+            document.getElementById("quantval").innerHTML="Product quantity cannot be negative";
+            document.getElementById("Quant").style.border="2px solid red"
+            add3=false;
+    
+        }
+        else{
 
-    if(String(quant).length===0){
-
-        document.getElementById("quantval").innerHTML="Product quantity is empty";
-        document.getElementById("Quant").style.border="2px solid red"
-        add3=false;
+            document.getElementById("quantval").innerHTML="Product quantity cannot be zero or start with zero or have special characters";
+            document.getElementById("Quant").style.border="2px solid red"
+            add3=false;
+        }
     }
-    else if(quant<0){
-        document.getElementById("quantval").innerHTML="Product quantity cannot be negative";
+
+    else if(quant>=10000){
+        document.getElementById("quantval").innerHTML="Product quantity should be less than 10000";
         document.getElementById("Quant").style.border="2px solid red"
         add3=false;
-
     }
     else{
         document.getElementById("quantval").innerHTML="";
@@ -94,32 +92,43 @@ function ReadProduct(){
     }
 
 
-    if(price===0 || String(price).length===0){
-        document.getElementById("priceval").innerHTML="Product price is empty";
-        document.getElementById("price").style.border="2px solid red"
-        add4=false;
-        
+    if(!pattern1.test(String(price))){
+        if(price<0){
+            document.getElementById("priceval").innerHTML="Product price cannot be negative";
+            document.getElementById("price").style.border="2px solid red"
+            add3=false;
+    
+        }
+        else{
 
-
+            document.getElementById("priceval").innerHTML="Product price cannot be zero or start with zero or have special characters";
+            document.getElementById("price").style.border="2px solid red"
+            add3=false;
+        }
     }
-    else if(price<0){
-        document.getElementById("priceval").innerHTML="Product price cannot be negative";
-        document.getElementById("price").style.border="2px solid red"
-        add4=false;
 
+    else if(price>=100000){
+        document.getElementById("priceval").innerHTML="Product quantity should be less than 100000";
+        document.getElementById("price").style.border="2px solid red"
+        add3=false;
     }
     else{
-        document.getElementById("priceval").innerHTML="";
+        document.getElementById("price").innerHTML="";
         document.getElementById("price").style.border="none"
-        add4=true;
+        add3=true;
 
     }
-
+    const pattern2=/^[a-zA-Z0-9](?:[a-zA-Z0-9]{0,4})$/;
     if(SDK.length===0){
         document.getElementById("SKUval").innerHTML="Product SKU is empty";
         document.getElementById("SDK").style.border="2px solid red"
         add5=false;
 
+    }
+    else if(!pattern2.test(SDK)){
+        document.getElementById("SKUval").innerHTML="Product SKU should be less than 5 and should not contain spaces";
+        document.getElementById("SDK").style.border="2px solid red"
+        add5=false;
     }
     else{
         document.getElementById("SKUval").innerHTML="";
@@ -129,10 +138,15 @@ function ReadProduct(){
     }
 
     if(desc.length===0){
-        document.getElementById("descval").innerHTML="Product SKU is empty";
+        document.getElementById("descval").innerHTML="Product desc is empty";
         document.getElementById("desc").style.border="2px solid red"
         add6=false;
 
+    }
+    else if(desc.length>=300){
+        document.getElementById("descval").innerHTML="Product desc should be less than 300";
+        document.getElementById("desc").style.border="2px solid red"
+        add6=false;
     }
     else{
         document.getElementById("descval").innerHTML="";
@@ -148,7 +162,6 @@ function ReadProduct(){
         
         AddProduct(productid,name,quant,price,SDK,desc)
     }
-    
 }
 function productidchanger(productid){
     return productid+1
@@ -181,14 +194,28 @@ function reset(){
     SDK1.value=""
     let desc1=document.getElementById("desc");
     desc1.value=""
+    document.getElementById("nameval").innerHTML="";
+    document.getElementById("quantval").innerHTML="";
+    document.getElementById("priceval").innerHTML="";
+    document.getElementById("SKUval").innerHTML="";
+    document.getElementById("descval").innerHTML="";
+    document.getElementById("name").style.border="none"
+    document.getElementById("Quant").style.border="none"
+    document.getElementById("price").style.border="none"
+    document.getElementById("SDK").style.border="none"
+    document.getElementById("desc").style.border="none"
+
+
 }
 function printData(arr){
     
     let data=document.getElementById("tbody")
     data.innerHTML=" "
+    let update1=document.getElementById("updatefield")
     for(let i=0;i<arr.length;i++){
-    
+ 
     data.innerHTML+= `<tr> <td>${arr[i].productid}</td> <td>${arr[i].Product_name}</td><td>${arr[i].quant}</td> <td>${arr[i].price}</td> <td>${arr[i].SDK}</td> <td>${arr[i].desc}</td> <td><button onclick="edit(${arr[i].productid},${i})" ><i class="fa fa-edit"></i></button>   <button onclick="delete1(${arr[i].productid})" ><i class="fa fa-trash-o"></i></button></td></tr>` 
+    update1.innerHTML=`<button type="submit" onclick="update(${i})" id="updatebtn">update</button>`
     }
     
 
@@ -211,7 +238,6 @@ function edit(productid,i){
     let price=document.getElementById("price");
     let SDK=document.getElementById("SDK");
     let desc=document.getElementById("desc");
-    if(flag){
 
       
         name.value=arr[i].Product_name;
@@ -220,45 +246,53 @@ function edit(productid,i){
         SDK.value=arr[i].SDK;
         desc.value=arr[i].desc; 
         document.getElementById("edit").innerHTML=`Change the fields you want to change then click update`;
-       
+        document.getElementById("updatebtn").style.display="inline-block";
         document.getElementById("submit").style.display="none";
-        flag=false;
-    }
-    else{
-        console.log(i)
-        arr[i].Product_name=name.value;
-        arr[i].quant=quant.value;
-        arr[i].price=price.value;
-        arr[i].SDK=SDK.value;
-        arr[i].desc=desc.value;
-        document.getElementById("edit").innerHTML=``;
-        document.getElementById("submit").style.display="inline-block";
+        document.getElementById("reset").style.display="none";
+        if(!flag){
+            update(i)
+        }
 
-        flag=true;
-        reset()
-        printData(arr)
-    }
+
+    
+
 }
 function update(i){
-    console.log(i)
+    flag=false;
+    console.log("hii")
     let name=document.getElementById("name");
     let quant=document.getElementById("Quant");
     let price=document.getElementById("price");
     let SDK=document.getElementById("SDK");
     let desc=document.getElementById("desc");
+    val(name,quant,price,SDK,desc)
+    arr[i].Product_name=name.value;
+    arr[i].quant=quant.value;
+    arr[i].price=price.value;
+    arr[i].SDK=SDK.value;
+    arr[i].desc=desc.value;
+    document.getElementById("edit").innerHTML=``;
+    document.getElementById("submit").style.display="inline-block";
+    
+    flag=true;
+    reset()
+    printData(arr)
+    console.log(i)
 
 
 }
 
 
 function search(){
-    let search=document.getElementById("search").value
-    if(search.length>0){
-        let filterdata=arr.filter(filter=>filter.Product_name===search)
-        printData(filterdata)
-
-    }
-    else{
-        printData(arr)
+    let search = document.getElementById("search").value.trim();
+    if (search.length > 0) {
+        let filterdata = arr.filter(filter => filter.Product_name.toLowerCase().includes(search.toLowerCase()));
+        if (filterdata.length > 0) {
+            printData(filterdata);
+        } else {
+            alert("No matching results found.");
+        }
+    } else {
+        printData(arr);
     }   
 }
