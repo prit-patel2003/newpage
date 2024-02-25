@@ -1,8 +1,8 @@
                                         // #Polyfill
 //polyfill for forEach
 // const arr=[1,2,3,4,5]
-// Array.prototype.forEach=null
-// Array.prototype.forEach=function(callback){
+
+// Array.prototype.forEach=function(){
 //     console.log(this)
 //     for(let i=1;i<=this.length;i++){ 
 //         console.log(i*2)
@@ -10,28 +10,15 @@
 // arr.forEach((el)=>{
 //     console.log(el)
 // })
-
-//polyfill for MAP
-
-// const arr=[1,2,3,4,5]
-// Array.prototype.map=function(callback){
-//     let obj=this
-//     let res=[]
-//     for(let i=0;i<obj.length;i++){
-//         res.push(callback(obj[i]))
-//     }
-//     return res;
-    
-// }
                                     // #Destruchring
 // const res1=arr.map(el=>el*2)
 // console.log(res1)
 // console.log(arr.map)
 
 // const a=[1,2,3,4,5,6];
-// const [x,,z,,d,]=a
-// const obj={p:1,q:2}
-// const {p,q}=obj
+// const [,,x,w,d,]=a
+// const obj={p:a,q:2}
+// // const {p,q}=obj
 // console.log(x,y,z)
 // console.log(x,z,d)
 // console.log(p,q)
@@ -76,13 +63,14 @@
 
                                         // #Array Method
 // #splice
-// const arr=[1,2,3,4,5]
-// console.log(arr.splice(1,4,4,5))
+// const arr = [1,2,3,4,5] 
+// console.log([...arr].splice(1))
+// console.log(arr.slice(1))
 // console.log(arr)
 
 // #slice
 // const arr=[1,2,3,4,5]
-// console.log(arr.slice(1,3))
+// console.log(arr);
 // console.log(arr.slice(-2,4))
 
 // #concat
@@ -96,13 +84,11 @@
 // console.log(arr.concat(obj))
 
 // #sort
-// let arr = [ 1, 2, 15 ];
+// let arr = [ 1, 2, 15,8 ];
 // arr.sort();
 // console.log(arr)
 // function comparenum(a,b){
-//     if(a>b) return 1
-//     if(a==b) return 0
-//     if(a<b) return -1
+//     b>a
 // }
 // let arr=[1,15,2]
 // arr.sort(comparenum)
@@ -136,3 +122,145 @@
 // console.log(obj.__proto__)
 
                                     //   CallBack
+
+
+
+                                            // hoisting
+
+// console.log(a)
+// var a=9;
+// console.log(a)
+// console.log(a)
+// let a=9;  
+// greet();               
+// function greet(){
+//     console.log("hello");
+// }
+// greet();               
+// const greet=()=>{
+//     console.log("hello");
+// }
+
+                                        // Event loops
+
+// setTimeout(function timer() {
+//   console.log('You clicked the button!');
+// }, 2000); 
+
+// console.log("Hi!");
+
+// setTimeout(function timeout() {
+//   console.log("Click the button!");
+// }, 5000);
+
+// console.log("Welcome to loop.");
+
+// function history(){
+//     das
+// }
+// fucntion greet(){
+//     history()
+// }
+// greet()
+
+                                        // Closure
+
+// const x=()=>{
+//     let x=1;
+//     console.log(x);
+//     const y=()=>{
+//     // x=2;
+//     console.log(x);
+//             const z=()=>{
+//                 // x=3
+//                 console.log(x)
+//             }
+//             z()
+//     }
+//     x=100;
+//     y()
+// }
+// x()
+
+//                                      #cookies
+
+// console.log(document.cookies)
+// document.cookies="name=prit213123123"
+// document.cookies="name1=1231212"
+// let a=prompt("enter key")
+// let b=prompt("entervalue")
+// document.cookies=`${encodeURIComponent(a)}=${encodeURIComponent(b)}`
+// console.log(document.cookies)
+
+                                        // #localstrorage
+// let key=prompt("enter key");
+// let value=prompt("enter value")
+// localStorage.setItem(`${key}`,`${value}`)
+// console.log(localStorage.getItem("name"))
+// console.log(localStorage.key("prit"))
+// if(key==0){
+//     localStorage.clear()
+// }
+
+                                    // #Call Bind apply
+
+// const obj={
+//     name:"prit",
+//     age:20,
+    
+// }
+// function getname(state,country){
+// console.log(this.name+" "+state+" "+country)
+// }
+// const obj2={
+//     name:"ut",
+//     age:20,
+    
+// }
+// getname.call(obj,"uganda","africa")
+// getname.apply(obj2,["guj","india"])
+// let a=getname.bind(obj,"uganda","africa")
+// a();
+                                        // #shallow copy
+
+// let obj={
+//     "name":"prit"
+// }
+// let user=obj;
+// user.name="ut";
+// console.log(obj)
+
+// let obj={
+//     "name":"prit"
+// }
+// let user=Object.assign({},obj);8/ console.log(obj)
+
+// let obj={
+//     "name":"prit"
+// }
+// let user={...obj};
+// user.name="ut";
+// console.log(obj)
+
+// let obj={
+//     "name":"prit",
+//     "add":{
+//         city:"ahm"
+//     }
+// }
+// let user=Object.assign({},obj);
+// user.add.city="UP";
+// console.log(obj)
+
+// let obj={
+//     "name":"prit",
+//     "add":{
+//         city:"ahm"
+//     }
+// }
+// let user=JSON.parse(JSON.stringify(obj));
+// user.add.city="UP";
+// console.log(obj)
+// console.log(user)
+
+
