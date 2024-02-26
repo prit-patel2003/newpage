@@ -21,8 +21,8 @@ function val(name, quant, price, SDK, desc) {
     let add4 = true;
     let add5 = true;
     let add6 = true;
-    let existdata = arr.some(item => item.Product_name.toLowerCase() === name.toLowerCase());
-    let existSDK = arr.some(item => item.SDK.toLowerCase() === SDK.toLowerCase());
+    let existdata = arr.some((item, index) => index !== editIndex && item.Product_name.toLowerCase() === name.toLowerCase());
+    let existSDK = arr.some((item, index) => index !== editIndex && item.SDK.toLowerCase() === SDK.toLowerCase());
     console.log(existSDK)
     console.log(existdata)
 
@@ -98,11 +98,11 @@ function val(name, quant, price, SDK, desc) {
             add3 = false;
         }
     } else if (price >= 100000) {
-        document.getElementById("price").innerHTML = "Product quantity should be less than 100000";
+        document.getElementById("priceval").innerHTML = "Product quantity should be less than 100000";
         document.getElementById("price").style.border = "2px solid red";
         add3 = false;
     } else {
-        document.getElementById("price").innerHTML = "";
+        document.getElementById("priceval").innerHTML = "";
         document.getElementById("price").style.border = "none";
         add3 = true;
     }
@@ -144,9 +144,14 @@ function val(name, quant, price, SDK, desc) {
         if (editIndex === -1) {
             AddProduct(productid, name, quant, price, SDK, desc);
         } else {
+            
             UpdateProduct(editIndex, name, quant, price, SDK, desc);
         }
+        }
     }
+
+function alreadyexist(index){
+    console.log("already exist "+index)
 }
 
 function productidchanger(productid) {
@@ -160,7 +165,7 @@ function AddProduct(productid, name, quant, price, SDK, desc) {
         "quant": quant,
         "price": price,
         "SDK": SDK,
-        "desc": desc
+        "desc":desc
     };
 
     arr.push(obj);
@@ -182,6 +187,16 @@ function reset() {
     desc1.value = "";
     document.getElementById("submit").innerText = "Add";
     document.getElementById("reset").style.display = "inline-block";
+    document.getElementById("nameval").innerHTML=""
+    document.getElementById("quantval").innerHTML=""
+    document.getElementById("priceval").innerHTML=""
+    document.getElementById("SKUval").innerHTML=""
+    document.getElementById("desc").innerHTML=""
+    document.getElementById("name").style.border = "none";
+    document.getElementById("Quant").style.border = "none";
+    document.getElementById("price").style.border = "none";
+    document.getElementById("SDK").style.border = "none";
+    document.getElementById("desc").style.border = "none";
 
     editIndex = -1;
 }
@@ -213,7 +228,11 @@ function edit(index) {
     document.getElementById("submit").innerText = "Update";
     document.getElementById("reset").style.display = "none";
 
-    editIndex = index;
+    if (editIndex === index) {
+        editIndex = -1;
+    } else {
+        editIndex = index;
+    }
 }
 
 function UpdateProduct(index, name, quant, price, SDK, desc) {
@@ -230,9 +249,11 @@ function UpdateProduct(index, name, quant, price, SDK, desc) {
 }
 
 function Delete(index) {
+    if (confirm("Are you sure you want to delete the data") == true) {
     arr.splice(index, 1);
     reset()
     printData(arr);
+    }
 }
 
 function search() {
@@ -242,7 +263,7 @@ function search() {
         if (filterdata.length > 0) {
             printData(filterdata);
         } else {
-            alert("No matching results found.");
+            document.getElementById("tbody").innerHTML="No data"
         }
     } else {
         printData(arr);
