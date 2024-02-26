@@ -1,0 +1,42 @@
+[
+    {
+      "id": 1,
+      "partNo": 123,
+      "name": "Product A",
+      "size": "Small",
+      "color": ["Red", "Blue"],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      "id": 2,
+      "partNo": 456,
+      "name": "Product B",
+      "size": "Large",
+      "color": ["Green", "Yellow"],
+      "description": "Integer id quam vel nulla cursus tincidunt."
+    },
+    {
+      "id": 3,
+      "partNo": 789,
+      "name": "Product C",
+      "size": "Medium",
+      "color": ["Black", "White"],
+      "description": "Pellentesque sit amet magna ac nisl volutpat hendrerit."
+    },
+    {
+      "id": 4,
+      "partNo": 101,
+      "name": "Product D",
+      "size": "Large",
+      "color": ["Purple", "Orange"],
+      "description": "Duis ultricies mi nec massa blandit ultrices."
+    },
+    {
+      "id": 5,
+      "partNo": 202,
+      "name": "Product E",
+      "size": "Small",
+      "color": ["Gray", "Brown"],
+      "description": "Vestibulum aliquam odio eu lectus molestie."
+    }
+  ]

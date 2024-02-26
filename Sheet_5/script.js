@@ -197,6 +197,8 @@ function reset() {
     document.getElementById("price").style.border = "none";
     document.getElementById("SDK").style.border = "none";
     document.getElementById("desc").style.border = "none";
+    document.getElementById("edit").innerHTML = "";
+
 
     editIndex = -1;
 }
@@ -226,6 +228,7 @@ function edit(index) {
     document.getElementById("SDK").value = obj.SDK;
     document.getElementById("desc").value = obj.desc;
     document.getElementById("submit").innerText = "Update";
+
     document.getElementById("reset").style.display = "none";
 
     if (editIndex === index) {
