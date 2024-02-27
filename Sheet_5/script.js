@@ -2,7 +2,7 @@ let arr = [];
 let productid = 0;
 let flag = true;
 let editIndex = -1;
-let flagupdate=false;
+
 
 function ReadProduct() {
     productid = productidchanger(productid);
@@ -197,6 +197,8 @@ function reset() {
     document.getElementById("price").style.border = "none";
     document.getElementById("SDK").style.border = "none";
     document.getElementById("desc").style.border = "none";
+    document.getElementById("edit").innerHTML = "";
+
 
     editIndex = -1;
 }
@@ -226,6 +228,7 @@ function edit(index) {
     document.getElementById("SDK").value = obj.SDK;
     document.getElementById("desc").value = obj.desc;
     document.getElementById("submit").innerText = "Update";
+
     document.getElementById("reset").style.display = "none";
 
     if (editIndex === index) {
@@ -236,7 +239,6 @@ function edit(index) {
 }
 
 function UpdateProduct(index, name, quant, price, SDK, desc) {
-    flagupdate=true
     arr[index].Product_name = name;
     arr[index].quant = quant;
     arr[index].price = price;
