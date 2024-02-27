@@ -4,6 +4,7 @@
 }
 .main{
     display: flex;
+   
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -26,6 +27,10 @@
     padding: 10px;
 }
 .form table td{
+    height: auto;
+    width: 10rem;
+}
+.form1 table td{
     height: auto;
     width: 10rem;
 }
@@ -113,6 +118,7 @@ span{
     height:1.3rem;
     box-shadow:2px 2px 2px black;
 }
+
 .table table button{
     margin-top:0.5rem;
     border: none;
@@ -174,7 +180,7 @@ p{
   .searchbtn{
   
     border: none;
-    width: 10rem;
+    width: 50rem;
     height: 40px;
 
     border-radius: 5px;
@@ -188,6 +194,104 @@ button:active{
     left: 1px;
     transition: 0.5s;
 }
-   
-   
+.sort{
+    border: none;
+    height: 40px;
+    width: auto;
+    border-radius:8px ;
+    background-color: white;;
+    color:grey;
+
+    text-align: center;
+} 
+.default{
+    border: none;
+    width: 60px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: white;
+    color:gray;
+    text-align: center;
+}
+#deletable{
+    display: none;
+}
+.form1 table{
+    display: flex;
+    flex-direction: column;
+    border-radius:20px;
+    background-color:#cda070 ;
+    box-shadow:10px 10px 10px 10px #FFE1A8;
+    width:25rem;
+    align-items: center;
+    border-spacing: 1rem;
+    color:black;
+    font-size: 1.2rem;
+    font-weight: 600;
+    height: auto;
+}
+.form1 table button{
+    margin-top:0.5rem;
+    border: none;
+    width: 10rem;
+    height: 1.6rem;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size:1.1rem ;
+    box-shadow:2px 2px 2px black;
+
+} 
+.form1 table input{
+    border:none;
+    border-radius: 5px;
+    height:1.3rem;
+}
+#deleteinput{
+    display: none;
+}
+#deletebtn{
+    display: inline-block;
+}
+.inputparticular{
+    border:none;
+    border-radius: 5px;
+    height:1.9rem;
+    
+    
+}
+#disname {
+    display: none;
+}
+#disid{
+    display: none;
+    
+}
+#editname {
+    display: none;
+}
+#editid{
+    display: none;
+    
+}
+span{
+    display: none;
+}
+#edittable{
+    display: none;
+
+}
+
+#editinput{
+    display: none;
+}
+#editbtn2{
+    width: 100%;
+}
+#weight{
+    display: none;
+}
+#weightinput{
+    display: none;
+}
+
    

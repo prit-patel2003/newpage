@@ -13,9 +13,9 @@
 <body>
     <div class="main">
 
-        <div class="form">
+        <div class="form" id="form">
 
-            <table>
+            <table >
                 <tr>
                     <td>
                         <label>Product ID:-</label><input type="number" id="pid" >
@@ -61,6 +61,11 @@
                     </td>
                 </tr>
                 <tr>
+                    <td id="weightinput">
+                        <label>Product weight:-</label><input type="number" max="100" id="partweight">
+                    </td>
+                </tr>
+                <tr>
                     <td>
                         <p id="colorval"></p>
                     </td>
@@ -76,17 +81,25 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><button type="submit" onclick="Read()" id="submit">Add</button></td>
+                    <td><button type="submit" onclick="Read()" id="submit">Add</button> <button type="reset" onclick="reset()" id="reset">Reset</button></td>
                     
 
                 </tr>
                
                 <tr>
-                    <td><button type="reset" onclick="reset()" id="reset">Reset</button></td>
+                    <td></td>
 
 
                 </tr>
-               
+                <tr>
+                    <div>
+
+                        <td><button type="button" onclick="Delete()" id="editbtn1">Delete</button> <button type="button" onclick="edit()" id="editbtn2">Edit</button> <button type="button" onclick="addweight()" id="editbtn3">Add weight</button> <button type="button" onclick="addcompany()" id="editbtn4">Add  details</button></td>
+                    </div>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
                 <tr>
                     <td>
                         <p id="edit"></p>
@@ -95,9 +108,86 @@
                 <tr id="updatefield">
 
                 </tr>
+               
 
             </table>
+           
+        </div>
+        <div id="deletable" class="form1">
+            <table>
+                <tr>
+                    <td> 
+                        <label>Delete by:-<label id="disname">Name</label> <label id="disid">ID</label></label>
+            
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                            <div id="deletebtn">
+                            <button onclick="deletename()">Name</button> <button onclick="deleteid()">ID</button>
+                        </div>
+                        </td>
 
+                </tr>
+                <tr>  <td>  
+                    <div id="deleteinput">
+                    <input type="text" class="inputparticular" id="inputparticular">  <button onclick="deleteparticular()">Delete</button>
+                    </div>
+                </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="edittable" class="form1">
+            <table>
+                <tr>
+                    <td> 
+                        <label>Edit by:-<label id="editname">Name</label> <label id="editid">ID</label></label>
+            
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                            <div id="editbtn">
+                            <button onclick="editname()">Name</button> <button onclick="editid()">ID</button> 
+                        </div>
+                        </td>
+
+                </tr>
+                <tr>  <td>  
+                    <div id="editinput">
+                    <input type="text" class="inputparticular" id="editparticular">  <button onclick="editparticular()">Edit</button>
+                    </div>
+                </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="Companytable" class="form1">
+          <table>
+            <tr>
+                <td>
+                    <label>Company name</label>
+                    <input type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Address
+                    </label>
+                    <textarea class="textarea">
+                    </textarea>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Establish Date:-</label>
+                    <input type="date">
+                </td>
+            </tr>
+          </table>
         </div>
 
         <div class="table">
@@ -109,8 +199,37 @@
                         </path>
                     </g>
                 </svg>
-             
-                <input placeholder="Search" type="search" class="input" id="search" oninput="search()">
+             <div>
+
+                 <input placeholder="Search" type="search" class="input" id="search" oninput="search()">
+             </div>
+             <div>
+                <select class="sort" id="sortvalue" onchange="sort()">
+                    <option selected disabled hidden>Sort</option>
+                    <optgroup label="ID">
+                        <option value="partIdSortup">sort by id &#8593;</option>
+                        <option value="partIdSortdown">sort by id &#8595;</option>
+                    </optgroup>
+                    <optgroup label="Part Number">
+
+                        <option value="partNoSortup">sort by part No. &#8593;</option>
+                        <option value="partNoSortdown">sort by part No. &#8595;</option>
+
+                    </optgroup>
+                    <optgroup label="Name">
+
+                        <option value="partNameSort">sort by part Name</option>
+                    </optgroup>
+                    
+
+
+                </select>
+                <!-- <button class="default" onclick="default1()">
+                    Default
+                </button> -->
+                 
+
+             </div>
                
         
                 
@@ -141,9 +260,13 @@
                         <td>
                             Description
                         </td>
-                        <td>
-                            Action
+                        <td >
+                            Weight
                         </td>
+                        <td >
+                            Company details
+                        </td>
+                      
                     </tr>
 
                     <tbody id="tbody">

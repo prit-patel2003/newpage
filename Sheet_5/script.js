@@ -2,7 +2,7 @@ let arr = [];
 let productid = 0;
 let flag = true;
 let editIndex = -1;
-let flagupdate=false;
+
 
 function ReadProduct() {
     productid = productidchanger(productid);
@@ -239,7 +239,6 @@ function edit(index) {
 }
 
 function UpdateProduct(index, name, quant, price, SDK, desc) {
-    flagupdate=true
     arr[index].Product_name = name;
     arr[index].quant = quant;
     arr[index].price = price;
