@@ -62,9 +62,11 @@
                 </tr>
                 <tr>
                     <td id="weightinput">
-                        <label>Product weight:-</label><input type="number" max="100" id="partweight">
+                        <label>Product weight:-</label><input type="number" max="100" id="partweight"><br>
+                        <p id="partweightval"></p>
                     </td>
                 </tr>
+              
                 <tr>
                     <td>
                         <p id="colorval"></p>
@@ -86,11 +88,7 @@
 
                 </tr>
                
-                <tr>
-                    <td></td>
-
-
-                </tr>
+                
                 <tr>
                     <div>
 
@@ -164,32 +162,43 @@
         </div>
 
         <div id="Companytable" class="form1">
-          <table>
-            <tr>
+            <table>
+              <tr>
+                  <td>
+                      <label>Company name</label>
+                      <input type="text" id="companyname">
+                  </td>
+              </tr>
+              <tr>
                 <td>
-                    <label>Company name</label>
-                    <input type="text">
+                    <p id="companynameval"></p>
                 </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>
-                        Address
-                    </label>
-                    <textarea class="textarea">
-                    </textarea>
+              </tr>
+              <tr>
+                  <td>
+                      <label>
+                          Address
+                      </label>
+                      <input class="textarea" id="address">
+                      
+                      <br>
+                      <p id="addressval"></p>
+  
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label>Establish Date:-</label>
+                      <input type="date" id="date"><br>
+                      <p id="dateval"></p>
+                  </td>
+              </tr>
+            
+            </table>
+          </div>
+  
 
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>Establish Date:-</label>
-                    <input type="date">
-                </td>
-            </tr>
-          </table>
-        </div>
-
+        
         <div class="table">
             <div class="group">
                 <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
@@ -219,6 +228,14 @@
                     <optgroup label="Name">
 
                         <option value="partNameSort">sort by part Name</option>
+                    </optgroup>
+                    <optgroup label="Date">
+
+                        <option value="Date">sort by Establish date</option>
+                    </optgroup>
+                    <optgroup label="Company Name">
+
+                        <option value="Namelength">sort by Company name</option>
                     </optgroup>
                     
 
