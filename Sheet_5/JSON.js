@@ -2,6 +2,7 @@ let JSON1=[]
 let flag=true;
 let searchdata="id"
 let editIndex=-1;
+let flagcompany=true;
 function Read(){
     let id=document.getElementById("pid").value;
     let partno=document.getElementById("partNo").value;
@@ -11,12 +12,17 @@ function Read(){
     let checkedValues = [...checked].map(c => c.value).join(' ');
     let desc=document.getElementById("desc").value;
     let weight=document.getElementById("partweight").value;
-    if(val(id,partno,name,size,checkedValues,desc,weight)){
+    let companyname=document.getElementById("companyname").value;
+    let address=document.getElementById("address").value;
+    let date=document.getElementById("date").value;
+    
+
+    if(val(id,partno,name,size,checkedValues,desc,weight,companyname,address,date)){
         if(editIndex===-1){
-            add(id,partno,name,size,checkedValues,desc,weight)
+            add(id,partno,name,size,checkedValues,desc,weight,companyname,address,date)
         }
         else{
-            UpdateProduct(editIndex, id, partno, name, size, checkedValues, desc,weight);
+            UpdateProduct(editIndex, id, partno, name, size, checkedValues, desc,weight,companyname,address,date);
             editIndex=-1
         }
     }   
@@ -179,10 +185,21 @@ function val(id,partno,name,size,checkedValues,desc){
     }
 
 }
-function add(id,partno,name,size,checkedValues,desc,weight){
+function add(id,partno,name,size,checkedValues,desc,weight,companyname,address,date){
+    let details=[]
     if(weight===""){
         weight=0
     }
+    if(companyname!="" && address!="" && date!=""){
+        details.push(companyname)
+        details.push(address)
+        details.push(new Date(date))
+    }
+    else{
+        details.push("NA")
+
+    }
+ 
     let obj={
         "id":id,
         "partno":partno,
@@ -190,7 +207,8 @@ function add(id,partno,name,size,checkedValues,desc,weight){
         "size":size,
         "color":checkedValues,
         "desc":desc,
-        "weight":weight
+        "weight":weight,
+        "details":details
 
     }
     JSON1.push(obj);
@@ -225,9 +243,20 @@ function editparticular(){
     document.getElementById("partNo").value = obj.partno;
     document.getElementById("name").value = obj.name;
     document.getElementById("desc").value = obj.desc;
-    if(obj.weight==="NA"){
+    if(obj.details[0]==="NA"){
 
-    document.getElementById("partweight").value=0
+        document.getElementById("companyname").value="";
+        document.getElementById("address").value="";
+        document.getElementById("date").value="";
+    }
+    else{
+        document.getElementById("companyname").value=obj.details[0];
+        document.getElementById("address").value=obj.details[1];
+        document.getElementById("date").value=obj.details[2].toISOString().substring(0, 10);
+    }
+    if(obj.weight===0){
+
+    document.getElementById("partweight").value=""
     }
     else{
     document.getElementById("partweight").value=obj.weight
@@ -268,13 +297,18 @@ function editparticular(){
 
 
 }
-function UpdateProduct(index, id, partno, name, size, color,desc,weight) {
+function UpdateProduct(index, id, partno, name, size, color,desc,weight,companyname,address,date) {
     console.log(weight)
     JSON1[index].id= id;
     JSON1[index].partno = partno;
     JSON1[index].name = name;
     JSON1[index].desc = desc;
     JSON1[index].weight = weight;
+    JSON1[index].details[0] = companyname;
+    JSON1[index].details[1] = address;
+    JSON1[index].details[2] = new Date(date)    ;
+
+    
 
     document.getElementById("reset").style.display = "inline-block";
     document.getElementById("submit").innerText = "Add";
@@ -302,10 +336,18 @@ function reset(){
     document.getElementById("desc").style.border="none";
     editIndex=-1
     document.getElementById("form").style.display="inline-block"
+    document.getElementById("weightinput").style.display="none"
     document.getElementById("deletable").style.display="none"
     document.getElementById("disname").style.display="none"
     document.getElementById("disid").style.display="none"
     document.getElementById("editbtn3").innerText="Add Weight"
+    document.getElementById("Companytable").style.display="none"
+    document.getElementById("editbtn4").innerText="Add details"
+    flag=true;
+    flagcompany=true;
+    document.getElementById("companyname").value="";
+        document.getElementById("address").value="";
+        document.getElementById("date").value=""
 
     
 
@@ -338,13 +380,20 @@ function printData(JSON1){
         tr += "<td>" + JSON1[i].color + "</td>";
         tr += "<td>" + JSON1[i].desc + "</td>";
         
-        if(JSON1[i].weight===0){
+        if(JSON1[i].weight===0 || JSON1[i].weight===""){
 
-            tr += "<td>" + "NA" + "</td>";
+            tr += "<td>" + "-" + "</td>";
         }
         else{
             tr += "<td>" + JSON1[i].weight + "</td>";
 
+        }
+        if(JSON1[i].details[0]==="NA"){
+            tr += "<td>" + "-" + "</td>";
+        }
+        else{
+            tr += "<td>" + "Name:"+JSON1[i].details[0]+"<br><br>"+"Address:"+JSON1[i].details[1]+"<br><br>"+"Date:"+JSON1[i].details[2]+ "</td>";
+            
         }
 
         tr += "</tr>";
@@ -394,6 +443,19 @@ function sort(){
                   }
                   return 0;
             })
+        case "Date":
+            JSON1.sort((a,b)=>a.details[2]-b.details[2])
+            break;
+        case "Namelength":
+            JSON1.sort((a,b)=>{
+                if (a.details[0].length < b.details[0].length) {
+                    return -1;
+                  }
+                  if (a.details[0].length > b.details[0].length) {
+                    return 1;
+                  }
+                  return 0;
+            })
             break;
         
 
@@ -424,5 +486,20 @@ function addweight(){
 
 }
 function addcompany(){
+    if(flagcompany){
+
+        document.getElementById("Companytable").style.display="inline-block"
+        document.getElementById("editbtn4").innerText="Remove details"
+
+        flagcompany=false
+    }
+    else{
+        flagcompany=true
+        document.getElementById("Companytable").style.display="none"
+        document.getElementById("editbtn4").innerText="Add details"
+
+
+    }
     
+
 }
