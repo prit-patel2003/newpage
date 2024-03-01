@@ -10,6 +10,14 @@
   
 }
 
+.blur1{
+    width: 100%;
+    height: 150%;
+    position: absolute;
+    backdrop-filter: blur(10px); 
+
+}
+
 
 .main{
     display: flex;
@@ -133,6 +141,7 @@ label{
 .textarea{
     border:3px solid black;
     background-color: rgb(34, 33, 33);
+    color:white;
 }
 
 span{
@@ -253,8 +262,8 @@ button:active{
     display: flex;
     flex-direction: column;
     border-radius:20px;
-    background-color:#cda070 ;
-    box-shadow:10px 10px 10px 10px #FFE1A8;
+    background-color:white ;
+    
     width:25rem;
     align-items: center;
     border-spacing: 1rem;
@@ -278,6 +287,8 @@ button:active{
     border:none;
     border-radius: 5px;
     height:1.3rem;
+    background-color: rgb(34, 33, 33);
+    color:white;
 }
 #deleteinput{
     display: none;
@@ -337,5 +348,3 @@ span{
 #back1{
     display: none;
 }
-
-   

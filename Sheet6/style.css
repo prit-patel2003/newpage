@@ -1,0 +1,52 @@
+.main{
+    display: flex;
+    flex-direction: column;
+
+}
+.heading{
+    font-size: xx-large;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.inner{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    gap:2rem;
+    margin:2rem;
+}
+.displayinner{
+    display: flex;
+    flex-wrap: wrap;
+    margin:1rem;
+    padding: 2rem;
+}
+.productdata{
+    width: 33%;
+    height: 4rem;
+    margin-top:1rem;
+    
+    
+}
+img{
+    margin:10px
+}
+.displayimage{
+    margin-top: 10px;
+    margin-left:10px
+}
+table{
+    margin:2rem;
+    width: 100%;
+
+}
+.table{
+    border: 1px solid gray;
+    margin: 2rem;
+}
+td{
+    padding: 2rem;
+}
+.tbody{
+    padding: 2rem;
+}
