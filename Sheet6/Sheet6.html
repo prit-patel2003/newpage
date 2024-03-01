@@ -5,20 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="JSON.js"></script>
-    <link rel="stylesheet" href="JSONstyle.css">
+    <script src="sheet6.js"></script>
+    <link rel="stylesheet" href="sheet6.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body>
+<body onload="onload()">
     <div class="bg">
-
     <div class="main">
-     
-    
         <div class="form" id="form">
-
+            <!-- <div class="blur"></div>    -->
             <table >
+                <tr>
+                    <td>
+                        <label>Product Counter:-</label><input type="number" id="pcounter">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <p id="counterval"></p>
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         <label>Product ID:-</label><input type="number" id="pid" >
@@ -268,8 +276,9 @@
 
                     <tr>
                         <td>
-                            Sr.no
+                            Counter
                         </td>
+                    
                         <td>
                             ID
                         </td>
