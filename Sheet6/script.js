@@ -24,6 +24,11 @@ const data1={
                     "remaining_quantity": 1,
                     "expiry_date": "2024-03-29"
                 },
+                {
+                    "id": "22241480-7f48-4c6f-8912-d578df2d7cd0",
+                    "remaining_quantity": 1,
+                    "expiry_date": "2024-03-29"
+                },
              
               
             ]
@@ -37,7 +42,17 @@ const data1={
                     "id": "ac8e4bf3-ae3f-4b17-8288-5f6744b3c492",
                     "remaining_quantity": 80,
                     "expiry_date": "2024-03-25"
-                }
+                },
+                {
+                    "id": "ac8e4bf3-ae3f-4b17-8288-5f6744b3c492",
+                    "remaining_quantity": 70,
+                    "expiry_date": "2024-03-25"
+                },
+                {
+                    "id": "ac8e4bf3-ae3f-4b17-8288-5f6744b3c492",
+                    "remaining_quantity": 70,
+                    "expiry_date": "2024-03-25"
+                },
             ]
         },
         {
@@ -49,6 +64,31 @@ const data1={
                     "id": "75a738ce-0862-43da-9c50-4a444281dc9e",
                     "remaining_quantity": 10,
                     "expiry_date": "2024-03-02"
+                },
+                {
+                    "id": "75a738ce-0862-43da-9c50-4a444281dc9e",
+                    "remaining_quantity": 10,
+                    "expiry_date": "2024-03-02"
+                },
+                {
+                    "id": "75a738ce-0862-43da-9c50-4a444281dc9e",
+                    "remaining_quantity": 10,
+                    "expiry_date": "2024-03-02"
+                },
+                {
+                    "id": "75a738ce-0862-43da-9c50-4a444281dc9e",
+                    "remaining_quantity": 10,
+                    "expiry_date": "2024-03-02"
+                },
+                {
+                    "id": "75a738ce-0862-43da-9c50-4a444281dc9e",
+                    "remaining_quantity": 10,
+                    "expiry_date": "2024-03-02"
+                }
+                ,{
+                    "id": "75a738ce-0862-43da-9c50-4a444281dc9e",
+                    "remaining_quantity": 10,
+                    "expiry_date": "2024-03-02"
                 }
             ]
         }
@@ -56,9 +96,20 @@ const data1={
 }
 let url="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 function print(){
+    let stock=0;
+    let d=data1.inventory_detail.length
+    // let d1=data1.inventory_detail.quantity_detail.length
+    console.log(d)
+    // console.log(d1)
+
     let data=document.getElementById("display").innerHTML=`<div class="inner"><div class='displayimage'>Product Image<br><img src=${url} height='70px' width='70px'></div><div class='displayinner'><div class='productdata'>Product name<br>${data1.name}</div><div class='productdata'>Product SKU<br>${data1.sku}</div><div class='productdata'>Product weight<br>${data1.weight}</div><div class='productdata'>Product category<br>${data1.category}</div><div class='productdata'>Product supplier<br>${data1.supplier}</div><div class='productdata'>Product quant<br>${data1.remaining_quantity}</div><div class='productdata'>Product minstock<br>${data1.minimum_stock}</div><div class='productdata'>Product status<br>${data1.stock_status}</div></div></div>`;
     let data2=document.getElementById("tbody")
-    for(let i=0;i<data1.inventory_detail.length;i++){
-        data2.innerHTML+=`<tr><td>${i+1}</td><td>${data1.inventory_detail[i].remaining_quantity}</td><td>${data1.inventory_detail[i].created_at.split("").splice(0,10).join("")}</td><td>${data1.inventory_detail[i].quantity_detail[0].expiry_date}</td></tr>`
+    for(let i=0;i<d;i++){
+        for(let j=0;j<data1.inventory_detail[i].quantity_detail.length;j++){
+
+            stock=stock+data1.inventory_detail[i].quantity_detail[j].remaining_quantity
+        }
+        data2.innerHTML+=`<tr><td>${i+1}</td><td>${stock}</td><td>${data1.inventory_detail[i].created_at.split("").splice(0,10).join("")}</td><td>${data1.inventory_detail[i].quantity_detail[0].expiry_date}</td></tr>`
+        stock=0;
     }
 }

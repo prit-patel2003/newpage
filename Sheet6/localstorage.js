@@ -42,6 +42,9 @@ input2.addEventListener("keydown", function(e) {
       e.preventDefault();
     }
   });
+JSON1=JSON.parse(localStorage.getItem("myJSON1"))
+printData(JSON1)
+console.log(JSON1)
 }
 
 
@@ -58,8 +61,6 @@ function Read(){
     let companyname=document.getElementById("companyname").value;
     let address=document.getElementById("address").value;
     let date=document.getElementById("date").value;
-    
-
     if(val(id,partno,name,size,checkedValues,desc,weight,companyname,address,date,counter)){
         if(!maincounter.includes(counter)){
             maincounter.push(counter)
@@ -139,68 +140,58 @@ function deleteid(){
 
 }
 function deleteparticular() {
-    let d = document.getElementById("inputparticular").value;
+    let itemName = document.getElementById("inputparticular").value.trim();
+    let JSON2 = JSON.parse(localStorage.getItem("myJSON1"));
     let deleted = false;
-    
-    maincounter.forEach((item) => {
-        if (JSON1[item]) {
-            let initialLength = JSON1[item].length;
-            JSON1[item] = JSON1[item].filter((item1) => {
-                if (item1.name === d) {
-                    if (confirm("Are you sure you want to delete the data?")) {
-                        return false; 
-                    } else {
-                        return true; 
-                    }
-                } else {
-                    return true; 
-                }
-            });
-            if (initialLength !== JSON1[item].length) {
-                deleted = true;
-            }
+
+    let confirmDelete = confirm(`Are you sure you want to delete ${itemName}?`);
+    if (!confirmDelete) {
+        return;
+    }
+
+    for (let key in JSON2) {
+        JSON2[key] = JSON2[key].filter(item => item.name !== itemName);
+        if (JSON2[key].length < JSON.parse(localStorage.getItem("myJSON1"))[key].length) {
+            deleted = true;
         }
-    });
+    }
 
     if (!deleted) {
         alert("No data found.");
+    } else {
+        localStorage.setItem("myJSON1", JSON.stringify(JSON2));
+        printData(JSON2);
     }
-    printData(JSON1)
-    reset()
+
+    reset();
     document.getElementById("deletable").style.display = "none";
     document.getElementById("deleteinput").style.display = "none";
     document.getElementById("deletebtn").style.display = "inline-block";
     document.getElementById("inputparticular").value = "";
 }
+
 function deleteparticular1() {
-    let d = document.getElementById("inputparticular1").value;
+    let itemid = document.getElementById("inputparticular1").value.trim();
+    let JSON2 = JSON.parse(localStorage.getItem("myJSON1"));
+
     let deleted = false;
-    
-    maincounter.forEach((item) => {
-        if (JSON1[item]) {
-            let initialLength = JSON1[item].length;
-            JSON1[item] = JSON1[item].filter((item1) => {
-                if (item1.id === d) {
-                    if (confirm("Are you sure you want to delete the data?")) {
-                        return false; 
-                    } else {
-                        return true; 
-                    }
-                } else {
-                    return true; 
-                }
-            });
-            if (initialLength !== JSON1[item].length) {
-                deleted = true;
-            }
+    let confirmDelete = confirm(`Are you sure you want to delete ${itemid}?`);
+    if (!confirmDelete) {
+        return;
+    }
+    for (let key in JSON2) {
+        JSON2[key] = JSON2[key].filter(item => item.id !== itemid);
+        if (JSON2[key].length < JSON.parse(localStorage.getItem("myJSON1"))[key].length) {
+            deleted = true;
         }
-    });
+    }
 
     if (!deleted) {
         alert("No data found.");
+    } else {
+        localStorage.setItem("myJSON1", JSON.stringify(JSON2));
+        printData(JSON2);
     }
- 
-    printData(JSON1);
     
     reset();
     document.getElementById("deletable").style.display = "none";
@@ -519,13 +510,15 @@ function add(id,partno,name,size,checkedValues,desc,weight,companyname,address,d
         "details":details
         
     }
-    if (JSON1[counter]) {
-        JSON1[counter] = [...JSON1[counter], obj];
+    let existingData = JSON.parse(localStorage.getItem('myJSON1')) || {}; // Retrieve existing data or initialize as empty object
+    if (existingData[counter]) {
+        existingData[counter] = [...existingData[counter], obj];
     } else {
-        JSON1[counter] = [obj];
+        existingData[counter] = [obj];
     }
-    console.log(JSON1)
-    printData(JSON1)
+    localStorage.setItem('myJSON1', JSON.stringify(existingData));
+    console.log(existingData);
+    printData(existingData);
     reset()
  
 
@@ -542,7 +535,7 @@ function edit() {
     document.getElementById("editbtn3").innerText = "Update Weight";
     document.getElementById("Companytable").style.display="none"
     document.getElementById("back").style.display="inline-block"
-
+    console.log("h1")
 
 
 
@@ -556,7 +549,7 @@ document.getElementById("editbtn").style.display="none"
     document.getElementById("editparticular").style.display="inline-block"
     document.getElementById("editbtn5").style.display="none"
     document.getElementById("editbtn6").style.display="inline-block"
-   
+    console.log("h1")
 
 
 }
@@ -570,56 +563,62 @@ function editid(){
     document.getElementById("editparticular").style.display="none"
     document.getElementById("editbtn6").style.display="none"
     document.getElementById("editbtn5").style.display="inline-block"
-   
+    console.log("h1")
 
 
 }
 function editparticular1(){
-  
-    let index=-1;
+    let index = -1;
     let count;
-    let e=document.getElementById("editparticular").value;
-    let editdata = maincounter.map((item) => {
-        let length=JSON1[item].length
-        for(let i=0;i<length;i++){
-            if(JSON1[item][i].name===e){
-                index=i
-                count=item;
-                break
-            }
-         
-        }
-    })
-    console.log(index)
-    if(index===-1){
-        alert("item not found")
-    }
-    else{
-        editparticular(index,count)
-    }
-
-}
-function editparticular2(){
-    let index=-1;
-    let count;
-    let e=document.getElementById("editparticular1").value;
-    let editdata = maincounter.map((item) => {
-        let length=JSON1[item].length
-        for(let i=0;i<length;i++){
-            if(JSON1[item][i].id===e){
-                index=i
-                count=item;
-                break
-            }
+    let e = document.getElementById("editparticular").value;
+    let JSON2 = JSON.parse(localStorage.getItem("myJSON1"));
     
+    for (let key in JSON2) {
+        for (let i = 0; i < JSON2[key].length; i++) {
+            if (JSON2[key][i].name === e) {
+                index = i;
+                count = key;
+                break;
+            }
         }
-    })
-    console.log(index)
-    if(index===-1){
-        alert("item not found")
+        if (index !== -1) {
+            break;
+        }
     }
-    else{
-        editparticular(index,count)
+    
+    if (index === -1) {
+        alert("Item not found");
+    } else {
+        // Call your editparticular function here with index and count
+        editparticular(index, count);
+    }
+}
+
+function editparticular2(){
+    console.log("h1")
+    let index = -1;
+    let count;
+    let e = document.getElementById("editparticular1").value;
+    let JSON2 = JSON.parse(localStorage.getItem("myJSON1"));
+    
+    for (let key in JSON2) {
+        for (let i = 0; i < JSON2[key].length; i++) {
+            if (JSON2[key][i].id === e) {
+                index = i;
+                count = key;
+                break;
+            }
+        }
+        if (index !== -1) {
+            break;
+        }
+    }
+    
+    if (index === -1) {
+        alert("Item not found");
+    } else {
+        // Call your editparticular function here with index and count
+        editparticular(index, count);
     }
 
 }
@@ -628,7 +627,6 @@ function editparticular(index,count){
     let obj = JSON1[count][index];
     console.log(obj)
     document.getElementById("pcounter").value = count;
-
     document.getElementById("pid").value = obj.id;
     document.getElementById("partNo").value = obj.partno;
     document.getElementById("name").value = obj.name;
@@ -686,27 +684,28 @@ function editparticular(index,count){
 
 }
 function UpdateProduct(index, id, partno, name, size, color,desc,weight,companyname,address,date) {
+    let JSON2 = JSON.parse(localStorage.getItem("myJSON1"));
     let counter=document.getElementById("pcounter").value;
     console.log(counter)
     console.log(index)
-    JSON1[counter][index].id= id;
-    JSON1[counter][index].partno = partno;
-    JSON1[counter][index].name = name;
-    JSON1[counter][index].desc = desc;
-    JSON1[counter][index].weight = weight;
-    JSON1[counter][index].details.companyname = companyname;
-    JSON1[counter][index].details.address = address;
-    JSON1[counter][index].details.establishDate = new Date(date);
+    JSON2[counter][index].id= id;
+    JSON2[counter][index].partno = partno;
+    JSON2[counter][index].name = name;
+    JSON2[counter][index].desc = desc;
+    JSON2[counter][index].weight = weight;
+    JSON2[counter][index].details.companyname = companyname;
+    JSON2[counter][index].details.address = address;
+    JSON2[counter][index].details.establishDate = new Date(date);
     let checked = document.querySelectorAll('input[type="checkbox"]:checked');
     let checkedValues = [...checked].map(c => c.value).join(' ');
-    JSON1[counter][index].size=document.querySelector('input[type="radio"]:checked').value;
-    JSON1[counter][index].color=checkedValues
+    JSON2[counter][index].size=document.querySelector('input[type="radio"]:checked').value;
+    JSON2[counter][index].color=checkedValues
     
 
     document.getElementById("reset").style.display = "inline-block";
     document.getElementById("submit").innerText = "Add";
-    
-    printData(JSON1);
+    localStorage.setItem("myJSON1",JSON.stringify(JSON2))
+    printData(JSON2);
     reset();
     document.getElementById("editbtn1").style.display="inline-block"
     document.getElementById("editbtn2").style.display="inline-block"

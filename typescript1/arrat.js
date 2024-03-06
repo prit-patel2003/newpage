@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var arr = [];
+var str = [];
+var another = [];
+arr.push(1);
+str.push(["prit"]);
+another.push(1.02);
+console.log(arr);
+console.log(str);
+console.log(another);
