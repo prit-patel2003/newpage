@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="simple.js"></script>
+    <link rel="stylesheet" href="simple.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="main">
+
+        <div class="form">
+
+            <table>
+                <tr>
+                    <td>
+                        <label>Product Name:-</label><input type="name" max="50" name="name" id="name" class="name" >
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <p id="nameval"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Product Quantity:-</label><input type="number" max="100" id="Quant" name="name">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <p id="quantval"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Product Price:-</label><input type="number" id="price" name="name">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <p id="priceval"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Product SKU:-</label><input type="text" id="SDK" name="name">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p id="SKUval"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Product Description:-</label><textarea class="textarea" maxlength="300" id="desc" name="name"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p id="descval"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td><button type="submit" onclick="ReadProduct()" id="submit">Add</button></td>
+                    
+
+                </tr>
+               
+                <tr>
+                    <td><button type="reset" onclick="reset()" id="reset">Reset</button></td>
+
+
+                </tr>
+               
+                <tr>
+                    <td>
+                        <p id="edit"></p>
+                    </td>
+                </tr>
+                <tr id="updatefield">
+
+                </tr>
+
+            </table>
+
+        </div>
+
+        <div class="table">
+            <div class="group">
+                <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+                    <g>
+                        <path
+                            d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+                        </path>
+                    </g>
+                </svg>
+                <input placeholder="Search" type="search" class="input" id="search" oninput="search()">
+                <!-- <button class="searchbtn" onclick="search()"><i class="fa fa-search"></i></button> -->
+
+            </div>
+            
+            <div>
+                <table>
+
+                    <tr>
+                        <td>
+                            Sr.no
+                        </td>
+                        <td>
+                            Name
+                        </td>
+                        <td>
+                            Quantity
+                        </td>
+                        <td>
+                            Price
+                        </td>
+                        <td>
+                            SKU
+                        </td>
+                        <td>
+                            Description
+                        </td>
+                        <td>
+                            Action
+                        </td>
+                    </tr>
+
+                    <tbody id="tbody">
+                        
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
